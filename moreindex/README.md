@@ -14,8 +14,11 @@
 > 找到vue项目中的package.json > "devDependencies":{ 添加 "glob": "^7.0.3"}
 
 ## 打包多页面环境设置
+
+
+## vue > build > utils.js > 页面最下面添加
 ``` bash
-# vue > build > utils.js > 页面最下面添加
+
 /* 这里是添加的部分 ---------------------------- 开始 */
 
 // glob是webpack安装时依赖的一个第三方模块，还模块允许你使用 *等符号, 例如lib/*.js就是获取lib文件夹下的所有js后缀名的文件
@@ -75,5 +78,49 @@ exports.htmlPlugin = function () {
 
 
 ```
+## vue > build > webpack.base.conf.js > module.exports
+``` bash
+  // entry: {
+  //   app: './src/main.js'
+  // },
+> entry: utils.entries(),//修改入口文件
+
+```
+
+## vue > build > webpack.dev.conf.js > plugins
+``` bash
+  //注释
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: 'index.html',
+    //   inject: true
+    // }),
+  //结束
+  plugins[].concat(utils.htmlPlugin()) //添加
+```
+## vue > build >webpack.prod.conf.js > plugins
+``` bash
+//注释
+    // new HtmlWebpackPlugin({
+    //   filename: config.build.index,
+    //   template: 'index.html',
+    //   inject: true,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeAttributeQuotes: true
+    //     // more options:
+    //     // https://github.com/kangax/html-minifier#options-quick-reference
+    //   },
+    //   // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    //   chunksSortMode: 'dependency'
+    // }),
+//结束
+plugins[]..concat(utils.htmlPlugin()) //添加
+
+```
+## 至此webpack 配置结束了 但是需要改变文件路径
+
+
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
