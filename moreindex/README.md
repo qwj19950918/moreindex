@@ -120,7 +120,40 @@ plugins[]..concat(utils.htmlPlugin()) //添加
 
 ```
 ## 至此webpack 配置结束了 但是需要改变文件路径
+> 个人认为现在这个环境，每个页面单独的vue项目 每个页面都有自己的入口文件 主组件 router 
+
+## 文件目录如下
+
+```base
+├── src
+│   ├── assets
+│   │   └── logo.png
+│   ├── components
+│   │   ├── myone
+│   │   │      └── myone.vue
+│   │   └── mytwo
+│   │          └── mytwo.vue
+│   └── pages
+│       ├── mytwo
+│       │   ├── mytwo.html
+│       │   ├── mytwo.js
+│       │   └── mytwo.vue
+│       │   └── router
+│       │       └── index.js
+│       └── myone
+│           ├── myone.html
+│           ├── myone.js
+│           ├── myone.vue
+│           └── router
+│               └── index.js
+
+```
+## 打包后html会是空白页，因为是打包后文件路径变更的问题
+
+> vue > config >index.js > build
+
+> assetsPublicPath: '/' 改为 assetsPublicPath: './'
+
+> productionSourceMap :false (关闭vue打包出来的js有map的文件)
 
 
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
