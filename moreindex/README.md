@@ -2,7 +2,7 @@
 
 > 使用VUE为公司APP作H5嵌套，由于功能互无联系，多个功能的页面，自己觉得只有打包出多个html交给APP，所以使用的VUE需要打包多文件。
 
-> 从开发到结束，了解了这个环境的设置，是看了一位大神的GIT学习到的。（大神的git https://github.com/JaneSu/multiple-vue-page）。
+> 从开发到结束，了解了这个环境的设置，是看了一位大神的GIT学习到的。大神的git https://github.com/JaneSu/multiple-vue-page
 
 > 把他传到自己的git上面，也是因为这是自己没有接触过的东西，自己学习到了，就像分享出来，也有一些自己发现的需要注意的地方，也会说出来。
 
